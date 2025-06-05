@@ -60,7 +60,12 @@ defmodule Kino.Toast do
     Kino.JS.Live.new(__MODULE__, %{settings: opts})
   end
 
-  # Public API to queue one or more toasts
+  @doc """
+  Enqueue one or more toasts to the toast container.
+  """
+  def queue(_toast, []), do: :ok
+  def queue(_toast, nil), do: :ok
+
   def queue(toast, message) do
     if Keyword.keyword?(message) do
       Kino.JS.Live.cast(toast, {:append, [Map.new(message)]})
