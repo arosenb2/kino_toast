@@ -4,7 +4,7 @@ defmodule Kino.Toast.MixProject do
   def project do
     [
       app: :kino_toast,
-      version: "0.1.4",
+      version: "0.1.6",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       description: "Toast-style notifications for Kino-based Elixir Livebook apps.",
