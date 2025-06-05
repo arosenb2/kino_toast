@@ -1,7 +1,7 @@
+# Kino Toast
+
 [![Hex.pm](https://img.shields.io/hexpm/v/kino_toast.svg)](https://hex.pm/packages/kino_toast)
 [![CI](https://github.com/arosenb2/kino_toast/actions/workflows/ci.yml/badge.svg)](https://github.com/arosenb2/kino_toast/actions/workflows/ci.yml)
-
-# Kino Toast
 
 A Kino component that adds dismissable notifications in a Livebook Cell.
 
@@ -26,14 +26,8 @@ Click the button below to launch the notebook in Livebook:
 
 ### Running Locally
 
-```bash
-mix deps.get
-mix run
-```
-
-Or, if you’re using Livebook:
-	1.	Open Livebook
-	2.	Paste the notebook URL or upload it locally
+1. Open Livebook
+1. Paste the notebook URL or upload it locally
 
 ## 🤝 Contributing
 
