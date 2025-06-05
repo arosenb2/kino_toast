@@ -1,0 +1,38 @@
+# Elixir build artifacts
+/_build/
+/deps/
+erl_crash.dump
+*.ez
+kino_toast-*.tar
+/.fetch
+/cover/
+
+# Hex
+.hex/
+
+# Docs
+/doc/
+
+# Tests, coverage
+cover/
+test/tmp/
+test/fixtures/
+
+# Mix local config
+/.elixir_ls/
+.mix/
+config/*.secret.exs
+
+# Editor/OS files
+.DS_Store
+*.swp
+*.swo
+*.bak
+*.orig
+*~
+/tmp/
+
+# Livebook temp outputs & sessions
+*.livemd#*
+*.livemd-autosave
+*.livemd~*

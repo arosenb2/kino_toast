@@ -1,0 +1,36 @@
+# Kino.Toast
+
+```elixir
+Mix.install([
+  {:kino, "~> 0.16.0"},
+  {:kino_toast", "~> 0.1.0"}
+])
+```
+
+## Example
+
+```elixir
+toast = Kino.Toast.new(max_toasts: 3)
+Kino.render(toast)
+
+Kino.nothing()
+
+button = Kino.Control.button("Launch Toasts")
+
+Kino.render(button)
+```
+
+```elixir
+Kino.listen(button, fn _event ->
+  Kino.Toast.queue(toast, Kino.Toast.warning("Enqueued as a single alert."))
+
+  Kino.Toast.queue(toast, [
+    Kino.Toast.info("You can use built-in toast templates or make a custom one."),
+    Kino.Toast.custom("This is a <strong>Custom Toast</strong>.", icon: "bell"),
+    Kino.Toast.success("Messages are enqueued to only show a fixed number at a time."),
+    Kino.Toast.error("You can even use <em>HTML</em> in the message.")
+  ])
+end)
+
+Kino.nothing()
+```
