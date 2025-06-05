@@ -4,8 +4,6 @@ defmodule Kino.Toast do
   This module provides a simple way to create and manage toast notifications
   with various styles such as info, success, warning, and error.
 
-  [![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgithub.com%2Farosenb2%2Fkino_toast%2Fblob%2Fmain%2Fkino_toast.livemd)
-
   ## Usage
 
   To use this module, first create a new toast instance:
@@ -57,6 +55,7 @@ defmodule Kino.Toast do
   @doc """
   Creates a new instance of the Kino.Toast component.
   """
+  @doc section: :initialization
   def new(opts \\ []) do
     opts =
       opts
@@ -67,8 +66,9 @@ defmodule Kino.Toast do
   end
 
   @doc """
-  Enqueue one or more toasts to the toast container.
+  Enqueue one or more toasts to be displayed in the toast container.
   """
+  @doc section: :actions
   def queue(_toast, []), do: :ok
   def queue(_toast, nil), do: :ok
 
@@ -85,6 +85,7 @@ defmodule Kino.Toast do
 
   To customize, use `Kino.Toast.custom/2`.
   """
+  @doc section: :types
   def info(html, opts \\ []) do
     ensure_no_icon_or_emoji!(opts, "info")
 
@@ -103,6 +104,7 @@ defmodule Kino.Toast do
 
   To customize, use `Kino.Toast.custom/2`.
   """
+  @doc section: :types
   def success(html, opts \\ []) do
     ensure_no_icon_or_emoji!(opts, "success")
 
@@ -121,6 +123,7 @@ defmodule Kino.Toast do
 
   To customize, use `Kino.Toast.custom/2`.
   """
+  @doc section: :types
   def warning(html, opts \\ []) do
     ensure_no_icon_or_emoji!(opts, "warning")
 
@@ -139,6 +142,7 @@ defmodule Kino.Toast do
 
   To customize, use `Kino.Toast.custom/2`.
   """
+  @doc section: :types
   def error(html, opts \\ []) do
     ensure_no_icon_or_emoji!(opts, "error")
 
@@ -166,6 +170,7 @@ defmodule Kino.Toast do
 
   If both `:icon` and `:emoji` are provided, raises ArgumentError.
   """
+  @doc section: :custom
   def custom(html, opts \\ []) do
     opts =
       opts

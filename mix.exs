@@ -4,7 +4,7 @@ defmodule Kino.Toast.MixProject do
   def project do
     [
       app: :kino_toast,
-      version: "0.1.3",
+      version: "0.1.4",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       description: "Toast-style notifications for Kino-based Elixir Livebook apps.",
@@ -18,7 +18,18 @@ defmodule Kino.Toast.MixProject do
   defp docs do
     [
       main: "Kino.Toast",
-      extras: ["README.md", "CHANGELOG.md"]
+      groups_for_docs: [
+        Initialization: &(&1[:section] == :initialization),
+        Actions: &(&1[:section] == :actions),
+        "Pre-Built Toasts": &(&1[:section] == :types),
+        "Custom Toasts": &(&1[:section] == :custom)
+      ],
+      extras: [
+        "README.md": [title: "Readme"],
+        "CHANGELOG.md": [title: "Changelog"],
+        LICENSE: [title: "License"],
+        "kino_toast.livemd": [title: "Livebook"]
+      ]
     ]
   end
 
