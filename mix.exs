@@ -4,7 +4,7 @@ defmodule Kino.Toast.MixProject do
   def project do
     [
       app: :kino_toast,
-      version: "0.1.0",
+      version: "0.1.2",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       description: "Toast-style notifications for Kino-based Elixir Livebook apps.",
@@ -26,7 +26,13 @@ defmodule Kino.Toast.MixProject do
     [
       name: "kino_toast",
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/arosenb2/kino_toast"},
+      links: %{
+        "GitHub" => "https://github.com/arosenb2/kino_toast",
+        "Hex" => "https://hex.pm/packages/kino_toast",
+        "HexDocs" => "https://hexdocs.pm/kino_toast",
+        "Changelog" => "https://github.com/arosenb2/kino_toast/blob/main/CHANGELOG.md"
+      },
+      files: ~w(lib mix.exs README.md CHANGELOG.md LICENSE),
       maintainers: ["Aaron Rosenbaum"]
     ]
   end
