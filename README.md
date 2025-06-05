@@ -21,7 +21,7 @@ A Kino component that adds dismissable notifications in a Livebook Cell.
 
 Click the button below to launch the notebook in Livebook:
 
-[![Run in Livebook](https://livebook.dev/badge/v1/button.svg)](https://livebook.dev/run?url=https://github.com/arosenb2/kino_toast/blob/main/kino_toast.livemd)
+[![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgithub.com%2Farosenb2%2Fkino_toast%2Fblob%2Fmain%2Fkino_toast.livemd)
 
 ### Running Locally
 
@@ -34,7 +34,7 @@ Or, if you’re using Livebook:
 	1.	Open Livebook
 	2.	Paste the notebook URL or upload it locally
 
-🤝 Contributing
+## 🤝 Contributing
 
 See CONTRIBUTORS.md for contributor guidelines.
 
