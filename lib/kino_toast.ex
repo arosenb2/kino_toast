@@ -4,15 +4,32 @@ defmodule Kino.Toast do
   This module provides a simple way to create and manage toast notifications
   with various styles such as info, success, warning, and error.
 
+  [![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgithub.com%2Farosenb2%2Fkino_toast%2Fblob%2Fmain%2Fkino_toast.livemd)
+
   ## Usage
 
-  To use this module, you can create a new toast instance and queue notifications:
+  To use this module, first create a new toast instance:
 
   ```elixir
-  toast = Kino.Toast.new(max_toasts: 5, dismiss_after: 5000)
-  Kino.Toast.queue(toast, Kino.Toast.info("This is an info message"))
-  Kino.Toast.queue(toast, Kino.Toast.success("Operation completed successfully!"))
+  container = Kino.Toast.new(max_toasts: 5, dismiss_after: 5000)
   ```
+
+  Then, you can queue toasts to be displayed:
+
+  ```elixir
+  Kino.Toast.queue(container, Kino.Toast.info("This is an info message"))
+  Kino.Toast.queue(container, Kino.Toast.success("Operation completed successfully!"))
+  ```
+
+  ### Notes
+
+  - Do not immediately queue a toast after creating the instance, as it requires a moment to connect to the LiveView.
+  - If you have an idea for solving this, please open a pull request on the GitHub repository.
+
+  ## Instance Options
+
+  - `:max_toasts` - Maximum number of toasts to display at once (default: 3).
+  - `:dismiss_after` - Time in milliseconds after which the toast will automatically dismiss (default: 3000).
 
   ## Toast Types
 
@@ -20,23 +37,7 @@ defmodule Kino.Toast do
   - `Kino.Toast.success/2`: Creates a success toast with default styling.
   - `Kino.Toast.warning/2`: Creates a warning toast with default styling.
   - `Kino.Toast.error/2`: Creates an error toast with default styling.
-  - `Kino.Toast.custom/2`: Creates a custom toast with optional icon or emoji.
-
-  ## Options
-
-  - `:max_toasts` - Maximum number of toasts to display at once (default: 3).
-  - `:dismiss_after` - Time in milliseconds after which the toast will automatically dismiss (default: 3000).
-
-  ## Example
-
-  ```elixir
-  toast = Kino.Toast.new(max_toasts: 5, dismiss_after: 5000)
-  Kino.Toast.queue(toast, Kino.Toast.info("This is an info message"))
-  Kino.Toast.queue(toast, Kino.Toast.success("Operation completed successfully!"))
-  Kino.Toast.queue(toast, Kino.Toast.warning("This is a warning message"))
-  Kino.Toast.queue(toast, Kino.Toast.error("An error occurred!"))
-  Kino.Toast.queue(toast, Kino.Toast.custom("Custom toast with icon", icon: "bell", background_color: "#f0f0f0", text_color: "#333"))
-  ```
+  - `Kino.Toast.custom/2`: Creates a custom toast with an icon or emoji.
 
   ## Customization
 
@@ -44,6 +45,11 @@ defmodule Kino.Toast do
   and `:text_color` when creating a custom toast. The default styles can also be overridden by passing these options
   to the respective toast functions.
 
+  ## Example of Custom Toast
+
+  ```elixir
+  Kino.Toast.custom("Custom toast with icon", icon: "bell", background_color: "#f0f0f0", text_color: "#333")
+  ```
   """
   use Kino.JS
   use Kino.JS.Live
@@ -74,7 +80,6 @@ defmodule Kino.Toast do
     end
   end
 
-  # Toast constructor helpers
   @doc """
   Creates an info toast with default styling.
 
@@ -154,12 +159,12 @@ defmodule Kino.Toast do
   Creates a custom toast with optional icon or emoji.
 
   Options:
-  - :icon - FontAwesome icon class (e.g. "bell")
-  - :emoji - Emoji character (e.g. "🔔")
-  - :background_color - background color hex or CSS color string (default: "#fff")
-  - :text_color - text color hex or CSS color string (default: "#000")
+  - `:icon` - FontAwesome icon class (e.g. "`bell`")
+  - `:emoji` - Emoji character (e.g. "`🔔`")
+  - `:background_color` - background color hex or CSS color string (default: "`#fff`")
+  - `:text_color` - text color hex or CSS color string (default: "`#000`")
 
-  If both :icon and :emoji are provided, raises ArgumentError.
+  If both `:icon` and `:emoji` are provided, raises ArgumentError.
   """
   def custom(html, opts \\ []) do
     opts =
@@ -183,7 +188,7 @@ defmodule Kino.Toast do
   defp ensure_no_icon_or_emoji!(opts, name) do
     if Keyword.has_key?(opts, :icon) or Keyword.has_key?(opts, :emoji) do
       raise ArgumentError,
-            "#{name}/2 does not accept :icon or :emoji. Use a custom toast map with Kino.Toast.queue/2 if you want to customize."
+            "#{name}/2 does not accept `:icon` or `:emoji`. Use a custom toast map with Kino.Toast.queue/2 if you want to customize."
     end
   end
 
@@ -193,7 +198,7 @@ defmodule Kino.Toast do
 
     cond do
       has_icon and has_emoji ->
-        raise ArgumentError, "Provide only one of :icon or :emoji, not both."
+        raise ArgumentError, "Provide only one of `:icon` or `:emoji`, not both."
 
       has_icon ->
         icon = Keyword.fetch!(opts, :icon)

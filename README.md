@@ -15,6 +15,7 @@ A Kino component that adds dismissable notifications in a Livebook Cell.
 ### Requirements
 
 - Elixir >= 1.14
+- Kino >= 0.16
 - Livebook
 
 ### Try it in Livebook
@@ -36,7 +37,7 @@ Or, if you’re using Livebook:
 
 ## 🤝 Contributing
 
-See CONTRIBUTORS.md for contributor guidelines.
+See `CONTRIBUTORS.md` for contributor guidelines.
 
 ## 📄 License
 
