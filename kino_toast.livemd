@@ -3,7 +3,7 @@
 ```elixir
 Mix.install([
   {:kino, "~> 0.16.0"},
-  {:kino_toast", "~> 0.1.0"}
+  {:kino_toast, "~> 0.1.0"}
 ])
 ```
 
@@ -12,11 +12,10 @@ Mix.install([
 ```elixir
 toast = Kino.Toast.new(max_toasts: 3)
 Kino.render(toast)
+```
 
-Kino.nothing()
-
+```elixir
 button = Kino.Control.button("Launch Toasts")
-
 Kino.render(button)
 ```
 
